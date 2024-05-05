@@ -222,7 +222,7 @@ p{
 
 .folder{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr ;
   column-gap: 10px;
   row-gap: 25px;
 }
@@ -235,7 +235,7 @@ p{
 }
 @media screen and (max-width: 630px) {
   .folder{
-    grid-template-columns: 1fr ;
+    grid-template-columns: 1fr;
     column-gap: 30px;
     padding-left: 20px;
     padding-right: 20px;

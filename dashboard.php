@@ -105,7 +105,8 @@
                                     </div>
                                     <div class="download">
                                         <form  method="post">
-                                            <button type="submit" value="donwload"><i class="fa-solid fa-download"></i></button>
+                                            <button type="submit" name="download"><i class="fa-solid fa-download"></i></button>
+                                            <button type="submit" name = "delete" ><i class="fa-solid fa-trash"></i></button>
                                         </form>
                                     </div>
                                 </div>
