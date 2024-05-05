@@ -61,10 +61,18 @@
     </div>
     <!-- file will be showed here -->
     <div class="main">
-        <!-- left part of the main-->
-        <div class="left-part">
+        <!-- upper part of the main -->
+        <div class="upper-part">
             <?php echo '<p class="welcome">Welcome, ' . ucfirst($_SESSION["username"]) . '</p>'; ?>
- 
+            <!-- php script to upload a file -->
+            <form action="#" method="post" enctype="multipart/form-data" >
+                <input type="file" name="file" class="choose">
+                <button type="submit" name="submit" class="upload-btn"><i class="fa-solid fa-plus"></i> Upload</button>
+            </form>
+        </div>
+        <!-- lower part of the main-->
+        <div class="lower-part">
+
             <!-- folders will appear in this  -->
             <div class="folder">
             <?php
@@ -118,13 +126,7 @@
             </div>
         </div>
         <!-- right part of the main  -->
-        <div class="right-part">
-            <!-- php script to upload a file -->
-            <form action="#" method="post" enctype="multipart/form-data" >
-                <input type="file" name="file" class="choose">
-                <button type="submit" name="submit" class="upload-btn"><i class="fa-solid fa-plus"></i> Upload</button>
-            </form>
-        </div>
+        
     </div>
 
     <script src="https://kit.fontawesome.com/9dd236e792.js" crossorigin="anonymous"></script>

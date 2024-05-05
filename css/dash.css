@@ -70,7 +70,6 @@ p{
 .welcome{
     font-size: 24px;
     font-weight: 400;
-    margin-bottom: 30px;
 
 }
 .main{
@@ -80,17 +79,25 @@ p{
     border-radius: 8px;
     padding: 10px;
     display: flex;
+    flex-direction: column;
 
 }
-.left-part{
+.lower-part{
     flex: 1;
     margin-right: 30px;
 }
-.right-part form{
+.upper-part form{
     height: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: end;
+    align-items: center;
+    justify-content: center;
+}
+.upper-part{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 5px;
 }
   /* Style for custom button */
   .upload-btn {
@@ -108,7 +115,8 @@ p{
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 30px;
   }
   .upload-btn:hover {
     background-color: #45a049;
@@ -217,4 +225,22 @@ p{
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 10px;
   row-gap: 25px;
+}
+
+@media screen and (max-width: 1150px) {
+  .folder{
+    grid-template-columns: 1fr 1fr ;
+    column-gap: 20px;
+  } 
+}
+@media screen and (max-width: 810px) {
+  .folder{
+    grid-template-columns: 1fr ;
+    column-gap: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+  } 
+  .choose{
+    padding: 8px;
+  }
 }
