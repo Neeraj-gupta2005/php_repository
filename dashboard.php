@@ -7,36 +7,6 @@
     }
 ?>
 
-
-<!-- php script to upload a file -->
-
-<?php
-    if(isset($_POST['submit'])){
-        // Prepare SQL statement to retrieve file details for the signed-in user
-        $query = "SELECT * FROM uploaded_files WHERE user_id = (SELECT id FROM register WHERE username = '$username')";
-                            
-        // check if the file is uploading again
-        $result = mysqli_query($conn, $query);
-        
-        if(isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
-            // Process file upload
-            $filename = $_FILES['file']['name'];
-            $temp_name = $_FILES['file']['tmp_name'];
-            $filesize = $_FILES['file']['size'];
-    
-            // Move uploaded file to destination folder
-            $folder = __DIR__ . "/files/" . $filename;
-            move_uploaded_file($temp_name, $folder);
-            
-            // Prepare SQL statement to insert file details into the uploaded_files table
-            $query = "INSERT INTO uploaded_files (filename, filesize, upload_date, user_id) VALUES ('$filename', '$filesize', NOW(), (SELECT id FROM register WHERE username = '$username'))";
-            mysqli_query($conn, $query);
-        }
-        //updating a upload value by +1
-        $query="UPDATE register SET uploads = uploads + 1 WHERE username = '$username'";
-        mysqli_query($conn, $query);
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,9 +91,50 @@
         </div>
         <!-- right part of the main  -->
         <div class="right-part">
+            <!-- php script to upload a file -->
             <form action="#" method="post" enctype="multipart/form-data" >
                 <input type="file" name="file" class="choose">
                 <button type="submit" name="submit" class="upload-btn"><i class="fa-solid fa-plus"></i> Upload</button>
+                <?php
+            if(isset($_POST['submit'])) {
+                // Check if a file is selected for upload
+                if(isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+                    // Process file upload
+                    $filename = $_FILES['file']['name'];
+                    $filesize = $_FILES['file']['size'];
+                    $temp_name = $_FILES['file']['tmp_name'];
+            
+                    // Move uploaded file to destination folder
+                    $folder = __DIR__ . "/files/" . $filename;
+                    if(move_uploaded_file($temp_name, $folder)) {
+                        // Check if file already exists for the user
+                        $query = "SELECT * FROM uploaded_files WHERE filename = '$filename' AND user_id = (SELECT id FROM register WHERE username = '$username')";
+                        $result = mysqli_query($conn, $query);
+                        if(mysqli_num_rows($result) == 0) {
+                            // Insert file details into the uploaded_files table
+                            $query = "INSERT INTO uploaded_files (filename, filesize, upload_date, user_id) VALUES ('$filename', '$filesize', NOW(), (SELECT id FROM register WHERE username = '$username'))";
+                            if(mysqli_query($conn, $query)) {
+                                // Update upload count
+                                $query = "UPDATE register SET uploads = uploads + 1 WHERE username = '$username'";
+                                mysqli_query($conn, $query);
+                                echo "File uploaded successfully.";
+                            } else {
+                                echo "Error: " . mysqli_error($conn);
+                            }
+                        } else {
+                            echo '  <div class="error-box">
+                                        <p class="error-message">Error: File already exists.</p>
+                                    </div>';
+                        }
+                    } else {
+                        echo "Error uploading file.";
+                    }
+                } else {
+                    echo "No file selected for upload.";
+                }
+            }
+            
+        ?>
             </form>
         </div>
     </div>
