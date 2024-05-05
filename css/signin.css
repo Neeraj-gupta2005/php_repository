@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+body {
+    font-family: 'poppins';
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f4f9;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    width: 70%;
+    height: 55vh;
+    border-radius: 20px;
+}
+.right{
+    display: flex;
+    flex-direction: row;
+    flex:1;
+    align-items: center;
+    justify-content:center;
+}
+.left{
+    flex:1;
+}
+form{
+    width:80%;
+}
+.input-field1,.input-field2 , .input-field3{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+p{
+    margin: 0;
+}
+.logo {
+    display: inline-block;
+    background-image: linear-gradient(to right, #ff9966, #ff5e62);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin : 0;
+
+}
+
+.signin{
+    font-size: 35px;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+.input-field1 input ,.input-field2 input ,.input-field3 input {
+    padding:15px 10px;
+    border: 1px solid rgb(95, 95, 95);
+    border-radius: 4px;
+}
+.input-field1 , .input-field2 , .input-field3{
+    position: relative;
+}
+
+.input-field1 input,.input-field2 input,.input-field3 input  {
+    outline: none;
+    transition: 0.3s;
+}
+.placeholder{
+    position: absolute;
+    top:8px;
+    left:14px;
+    font-size: 15px;
+    transition: 0.3s;
+    pointer-events: none;
+    padding: 3px;
+}
+
+.input-field1 input:focus + .placeholder ,.input-field2 input:focus + .placeholder,.input-field3 input:focus + .placeholder{
+    top:-13.5px;
+    background-color: #fff;
+    color:#ff5e62;
+}
+.input-field1 input:focus ,.input-field2 input:focus,.input-field3 input:focus{
+    border:1px solid #ff5e62; 
+}
+.has-content .placeholder {
+    top: -13.5px;
+    background-color: #fff;
+    color: #ff5e62;
+}
+
+
+.forgot{
+    text-decoration: none;
+    font-size: 12px;
+    margin-top: 10px;
+}
+.signup-noti , .signup-noti a{
+    text-decoration: none;
+    font-size: 15px;
+    margin-top: 30px;
+}
+
+.btn{
+    margin-top: 30px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.create{
+    padding:  10px 12px;
+    background-color: transparent;
+    border-radius: 30px;
+    border: none;
+    color:  #ff9966;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+}
+.create:hover{
+    background-color:#ffece0 ;
+}
+.submit{
+    padding: 12px 15px;
+    background-color:  #ff9966;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size:  1rem;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.submit:hover{
+    background-color:#ff7029;
+}
+
+
+/* media queries */
+
+@media screen and (max-width: 650px) {
+    .container{
+        flex-direction: column;
+        height: 100vh;
+    }
+
+  }
+
+
+  .input-field1 input:focus + .placeholder,
+  .input-field2 input:focus + .placeholder,
+  .input-field3 input:focus + .placeholder,
+  .input-field1.has-content .placeholder,
+  .input-field2.has-content .placeholder,
+  .input-field3.has-content .placeholder {
+      top: -13.5px;
+      background-color: #fff;
+      color: #ff5e62;
+  }
+  
+  .success-box {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: rgb(21, 87, 36);
+    padding: 8px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top:15px;
+    width: 300px;
+  }
+  
+  .success-box .message {
+    font-size: 15px;
+    font-weight: bold;
+  }
+  
+
+  .failed-box {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 8px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top:15px;
+    width: 300px;
+  }
+  
+  .failed-box .message {
+    font-size: 15px;
+    font-weight: bold;
+  }
+  
