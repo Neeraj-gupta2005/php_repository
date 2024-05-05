@@ -227,13 +227,13 @@ p{
   row-gap: 25px;
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1000px) {
   .folder{
     grid-template-columns: 1fr 1fr ;
     column-gap: 20px;
   } 
 }
-@media screen and (max-width: 810px) {
+@media screen and (max-width: 630px) {
   .folder{
     grid-template-columns: 1fr ;
     column-gap: 30px;
