@@ -104,10 +104,7 @@
                                         <span class="text">' . $row["filename"] . '</span>
                                     </div>
                                     <div class="download">
-                                        <form  method="post">
-                                            <button type="submit" name="download"><i class="fa-solid fa-download"></i></button>
-                                            <button type="submit" name = "delete" ><i class="fa-solid fa-trash"></i></button>
-                                        </form>
+                                        <a href="download.php?filename=' . urlencode($row["filename"]) . '"><i class="fa-solid fa-download"></i></a>
                                     </div>
                                 </div>
                                 <div class="photo">
