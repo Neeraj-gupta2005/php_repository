@@ -112,7 +112,7 @@
                                         </div>
                                     </div>
                                     <div class="photo">
-                                        <img src="files/' . $row["filename"] . '"  alt="File Image">
+                                        <img src="files/' . $row["filename"] . '" >
                                     </div>
                                     <div class="lower">
                                         <div class="lower-left">
@@ -156,7 +156,7 @@
                                     </div>
                                 </div>
                                 <div class="photo">
-                                    <img src="files/' . $row["filename"] . '"  alt="File Image">
+                                    <img src="files/' . $row["filename"] . '">
                                 </div>
                                 <div class="lower">
                                     <div class="lower-left">

@@ -18,12 +18,19 @@
             <!-- php code to show a success message and an error -->
             <?php
                 $username = $email= $password = "";
+                function test_input($data){
+                    $data=trim($data);
+                    $data=stripslashes($data);
+                    $data=htmlspecialchars($data);
+                    return $data;
+                }
                 if ($_SERVER['REQUEST_METHOD']=="POST"){
 
                     if(isset($_POST['register'])){
-                        $username = $_POST['username'];
-                        $email = $_POST['email'];
+                        $username = test_input($_POST['username']);
+                        $email = test_input($_POST['email']);
                         $password = $_POST['password'];
+                        $hashpass = password_hash($password , PASSWORD_DEFAULT);
                         
                         //validate everything
                         if(empty($username) && empty($email) && empty($password)){
@@ -35,6 +42,11 @@
                         elseif(empty($username)){
                             echo '<div class="failed-box">
                                         <span class="message">Username cannot be empty</span>
+                                  </div>';
+                        }
+                        elseif(!preg_match("/^[a-zA-Z ]*$/",$username)){
+                            echo '<div class="failed-box">
+                                        <span class="message">Invalid username</span>
                                   </div>';
                         }
                         //validate email
@@ -50,7 +62,7 @@
                                   </div>';
                         }
                         else{
-                            $insert_query = "INSERT INTO register (username, email, password) VALUES ('$username', '$email', '$password')";
+                            $insert_query = "INSERT INTO register (username, email, password) VALUES ('$username', '$email', '$hashpass')";
                             $data = mysqli_query($conn,$insert_query);
                             if($data){
                                 echo '<div class="success-box">

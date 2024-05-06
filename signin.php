@@ -21,21 +21,30 @@
             <?php
                 if(isset($_POST['signin'])){
                     $username = $_POST['username'];
-                    $password = $_POST['password'];
-                    $query = "SELECT * FROM register WHERE username = '$username' AND password = '$password'";
-                    $data = mysqli_query($conn, $query);
 
-                    // Get the number of rows returned
-                    $output = mysqli_num_rows($data);
-                    if($output == 1){
-                        $_SESSION['username']=$username;
-                        header('location:dashboard.php');
-                    }  
-                    else{
-                        echo '<div class="failed-box">
-                                <span class="message">Login Failed</span>
-                            </div>';
-                    }
+                    $query = "select password from register where username = '".$username."' ";
+                    $result = mysqli_query($conn,$query);
+
+                    if ($result && mysqli_num_rows($result) == 1) {
+                        // Fetch the hashed password from the result
+                        $row = mysqli_fetch_assoc($result);
+                        $hashpass = $row['password'];
+                
+                        $password = $_POST['password']; 
+                        $query = "SELECT * FROM register WHERE username = '$username' AND password = '$hashpass'";
+                        $data = mysqli_query($conn, $query);
+
+                        // Get the number of rows returned
+                        $output = mysqli_num_rows($data);
+                        if($output == 1){
+                            $_SESSION['username']=$username;
+                            header('location:dashboard.php');
+                        }  
+                        else{
+                            echo '<div class="failed-box">
+                                    <span class="message">Login Failed</span>
+                                </div>';
+                        }}
                 }
             ?>
         </div>
