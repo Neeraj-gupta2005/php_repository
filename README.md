@@ -27,7 +27,7 @@ To set up this project locally, follow these steps:
    
 2. Set up a web server environment (e.g., Apache, Nginx) with PHP and MySQL support.
 
-3. Import the database schema provided in the `database.sql` file to set up the required database tables.
+3. Import the database schema provided in the `table.sql` file to set up the required database tables.
 
 4. Configure the database connection settings in the appropriate files (e.g., `connection.php`).
 
