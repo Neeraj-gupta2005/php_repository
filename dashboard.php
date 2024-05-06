@@ -52,7 +52,7 @@
         <form action="#" method="post">            
                 <div class="bar">
                     <input type="search" name="search" class="searchbar" placeholder="Search in YourREPO">
-                    <button type="submit" class="searchbtn"><i class="fas fa-search"></i></button>
+                    <button type="submit" class="searchbtn" name="searchbtn"><i class="fas fa-search"></i></button>
                 </div>
         </form>
         <div class="sign-out-div">
@@ -75,23 +75,71 @@
 
             <!-- folders will appear in this  -->
             <div class="folder">
+
+            <!-- searched result  -->
             <?php
+            if(!isset($_POST['searchbtn'])){
+
+                // normal result
                 // Function to format file size
                 function formatSize($bytes) {
-                $kb = $bytes / 1024;
-                    if ($kb < 1024) {
-                        return round($kb, 2) . ' KB'; // If size is less than 1 MB, display in KB
-                    } else {
-                        return round($kb / 1024, 2) . ' MB'; // If size is 1 MB or more, display in MB
+                    $kb = $bytes / 1024;
+                        if ($kb < 1024) {
+                            return round($kb, 2) . ' KB'; // If size is less than 1 MB, display in KB
+                        } else {
+                            return round($kb / 1024, 2) . ' MB'; // If size is 1 MB or more, display in MB
+                        }
                     }
-                }
+    
+                    // Prepare SQL statement to retrieve file details for the signed-in user
+                    $query = "SELECT * FROM uploaded_files WHERE user_id = (SELECT id FROM register WHERE username = '$username')";
+                                
+                    // Execute SQL statement
+                    $result = mysqli_query($conn, $query);
+                    // Display uploaded files as cards
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            // Display file details as a card
+                            echo '
+                                <div class="cards">
+                                    <div class="upper">
+                                        <div class="name">
+                                            <span class="icon"><i class="fa-solid fa-file"></i></span>
+                                            <span class="text">' . $row["filename"] . '</span>
+                                        </div>
+                                        <div class="download">
+                                            <a href="download.php?filename=' . urlencode($row["filename"]) . '"><i class="fa-solid fa-download"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="photo">
+                                        <img src="files/' . $row["filename"] . '"  alt="File Image">
+                                    </div>
+                                    <div class="lower">
+                                        <div class="lower-left">
+                                            <p>You uploaded ' .date("Y-m-d", strtotime($row["upload_date"])). '</p>
+                                        </div>
+                                        <div class="lower-right">
+                                            <p>Size ' .formatSize($row["filesize"]). '</p>
+                                        </div>   
+                                    </div>
+                                </div>';
+                                
+                    }}}
+                else{
+                    function formatSize($bytes) {
+                        $kb = $bytes / 1024;
+                            if ($kb < 1024) {
+                                return round($kb, 2) . ' KB'; // If size is less than 1 MB, display in KB
+                            } else {
+                                return round($kb / 1024, 2) . ' MB'; // If size is 1 MB or more, display in MB
+                            }
+                        }
+                $search = $_POST['search'];
 
-                // Prepare SQL statement to retrieve file details for the signed-in user
-                $query = "SELECT * FROM uploaded_files WHERE user_id = (SELECT id FROM register WHERE username = '$username')";
-                            
+                $query = "SELECT * FROM uploaded_files WHERE user_id = (SELECT id FROM register WHERE username = '$username') AND filename LIKE '%$search%'";
+
                 // Execute SQL statement
                 $result = mysqli_query($conn, $query);
-
                 // Display uploaded files as cards
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -119,8 +167,8 @@
                                     </div>   
                                 </div>
                             </div>';
-                }}
-            ?>
+                            
+                }}}?>
             </div>
         </div>
         <!-- right part of the main  -->

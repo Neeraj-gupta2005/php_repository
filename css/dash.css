@@ -18,8 +18,7 @@ p{
     margin-top: 0px;
     margin-bottom: 0px;
     width: 190px;
-
-}
+} 
 .searchbar{
     border: none;
     padding: 16px;
@@ -40,18 +39,21 @@ p{
 }
 
 .searchbtn{
-    position: absolute;
-    top: 13px;
-    right: 10px;
-    font-size: 18px;
-    border: none;
-    border-radius: 25px;
-    background-color: transparent;
-    cursor: pointer;
+  font-size: 18px;
+  border: none;
+  border-radius: 25px;
+  background-color: #e9eef6;
+  cursor: pointer;
+  padding: 10px 15px;
+  margin-left: 5px;
+  transition: 0.3s;
+}
+
+.searchbtn:hover{
+background-color: #cadfff;
 }
 
 .bar{
-    position: relative;
     display: flex;
     justify-content: end;
     margin-right: 10px;
