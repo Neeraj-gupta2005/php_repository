@@ -1,6 +1,6 @@
 # PHP User Registration and File Management Project
 
-![Screenshot]([C:\xampp\htdocs\wbp-project\images\screenshots\register.png](https://github.com/Neeraj-gupta2005/php_repository/blob/master/images/screenshots/register.png))
+![image]([C:\xampp\htdocs\wbp-project\images\screenshots\register.png](https://github.com/Neeraj-gupta2005/php_repository/blob/master/images/screenshots/register.png))
 ![Screenshot]([C:\xampp\htdocs\wbp-project\images\screenshots\signin.png](https://github.com/Neeraj-gupta2005/php_repository/blob/master/images/screenshots/signin.png))
 ![Screenshot]([C:\xampp\htdocs\wbp-project\images\screenshots\dashboard.png](https://github.com/Neeraj-gupta2005/php_repository/blob/master/images/screenshots/dashboard.png))
 
