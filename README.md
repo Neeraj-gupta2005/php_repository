@@ -1,8 +1,7 @@
 # PHP User Registration and File Management Project
-
-![image]([C:\xampp\htdocs\wbp-project\images\screenshots\register.png](https://github.com/Neeraj-gupta2005/php_repository/blob/master/images/screenshots/register.png))
-![Screenshot]([C:\xampp\htdocs\wbp-project\images\screenshots\signin.png](https://github.com/Neeraj-gupta2005/php_repository/blob/master/images/screenshots/signin.png))
-![Screenshot]([C:\xampp\htdocs\wbp-project\images\screenshots\dashboard.png](https://github.com/Neeraj-gupta2005/php_repository/blob/master/images/screenshots/dashboard.png))
+![image](https://github.com/Neeraj-gupta2005/php_repository/blob/master/images/screenshots/register.png)
+![image](https://github.com/Neeraj-gupta2005/php_repository/blob/master/images/screenshots/signin.png)
+![image](https://github.com/Neeraj-gupta2005/php_repository/blob/master/images/screenshots/dashboard.png)
 
 
 This PHP project provides user registration, login, and file management functionalities. It aims to ensure security through password hashing, prevent XSS attacks, and allow users to securely upload and download files.
