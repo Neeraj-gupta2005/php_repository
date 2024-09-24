@@ -77,6 +77,19 @@
         <!-- lower part of the main-->
         <div class="lower-part">
 
+            <div>
+                <?php 
+                    if (isset($_SESSION['message-success'])) {
+                    echo "<div id='message' class='success-box'>" . $_SESSION['message-success'] . "</div>";
+                    unset($_SESSION['message-success']); // Clear message after displaying it
+                    }
+                    if (isset($_SESSION['message-failed'])) {
+                    echo "<div id='message' class='failed-box'>" . $_SESSION['message-failed'] . "</div>";
+                    unset($_SESSION['message-failed']); // Clear message after displaying it
+                    }
+
+                ?>
+            </div>
             <!-- folders will appear in this  -->
             <div class="folder">
 
@@ -190,6 +203,7 @@
 
     <script src="https://kit.fontawesome.com/9dd236e792.js" crossorigin="anonymous"></script>
     <script src="js/hover.js"></script>
+    <script src="js/message.js"></script>
 </body>
 </html>
 
