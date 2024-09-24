@@ -21,7 +21,6 @@
             <?php
                 if(isset($_POST['signin'])){
                     $username = $_POST['username'];
-
                     $query = "select password from register where username = '".$username."' ";
                     $result = mysqli_query($conn,$query);
 
@@ -31,12 +30,9 @@
                         $hashpass = $row['password'];
                 
                         $password = $_POST['password']; 
-                        $query = "SELECT * FROM register WHERE username = '$username' AND password = '$hashpass'";
-                        $data = mysqli_query($conn, $query);
+                        $isCorrect = password_verify($password, $hashpass);
 
-                        // Get the number of rows returned
-                        $output = mysqli_num_rows($data);
-                        if($output == 1){
+                        if($isCorrect == 1){
                             $_SESSION['username']=$username;
                             header('location:dashboard.php');
                         }  

@@ -130,6 +130,7 @@ background-color: #cadfff;
     border-radius: 8px;
   }
 
+  
 
   /* cards styling */
   .cards{
@@ -226,25 +227,54 @@ background-color: #cadfff;
 
 .folder{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr ;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 10px;
   row-gap: 25px;
 }
 
-@media screen and (max-width: 1000px) {
-  .folder{
-    grid-template-columns: 1fr 1fr ;
-    column-gap: 20px;
-  } 
+
+/* 1. Laptop Screens (4 columns) */
+@media (min-width: 1024px) { /* Example breakpoint for laptops */
+  .folder {
+    grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+  }
 }
-@media screen and (max-width: 630px) {
+
+/* 2. Tablet Screens (3 columns) */
+@media (min-width: 768px) and (max-width: 1300px) { /* Example breakpoint for tablets */
+  .folder {
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  }
+}
+
+/* 3. Small Tablet Screens (2 columns) */
+@media (min-width: 576px) and (max-width: 1000px) { /* Example breakpoint for small tablets */
+  .folder {
+    grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+    column-gap: 20px;
+  }
+}
+
+/* 4. Mobile Screens (1 column) */
+@media (max-width: 575px) { /* Example breakpoint for mobile */
+  .upper-part{
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
   .folder{
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* 1 column */
     column-gap: 30px;
     padding-left: 20px;
     padding-right: 20px;
-  } 
-  .choose{
-    padding: 8px;
+  }
+  .bar{
+    display: none;
+  }
+  .file-choose{
+    width: 200px;
+    overflow: hidden;
+    border-radius: 8px;
   }
 }

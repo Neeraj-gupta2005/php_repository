@@ -49,7 +49,7 @@
             <h1 class="logo">YourREPO</h1>
         </div>
         
-        <form action="#" method="post">            
+        <form action="#" method="post" >            
                 <div class="bar">
                     <input type="search" name="search" class="searchbar" placeholder="Search in YourREPO">
                     <button type="submit" class="searchbtn" name="searchbtn"><i class="fas fa-search"></i></button>
@@ -65,10 +65,14 @@
         <div class="upper-part">
             <?php echo '<p class="welcome">Welcome, ' . ucfirst($_SESSION["username"]) . '</p>'; ?>
             <!-- php script to upload a file -->
+            
             <form action="#" method="post" enctype="multipart/form-data" >
-                <input type="file" name="file" class="choose">
+                <div class="file-choose">
+                    <input type="file" name="file" class="choose">
+                </div>
                 <button type="submit" name="submit" class="upload-btn"><i class="fa-solid fa-plus"></i> Upload</button>
             </form>
+            
         </div>
         <!-- lower part of the main-->
         <div class="lower-part">

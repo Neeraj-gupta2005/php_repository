@@ -29,9 +29,6 @@ body {
     align-items: center;
     justify-content:center;
 }
-.left{
-    flex:1;
-}
 form{
     width:80%;
 }
@@ -146,58 +143,83 @@ p{
 }
 
 
-/* media queries */
+.input-field1 input:focus + .placeholder,
+.input-field2 input:focus + .placeholder,
+.input-field3 input:focus + .placeholder,
+.input-field1.has-content .placeholder,
+.input-field2.has-content .placeholder,
+.input-field3.has-content .placeholder {
+    top: -13.5px;
+    background-color: #fff;
+    color: #ff5e62;
+}
 
-@media screen and (max-width: 650px) {
+.success-box {
+background-color: #d4edda;
+border: 1px solid #c3e6cb;
+color: rgb(21, 87, 36);
+padding: 8px;
+border-radius: 5px;
+text-align: center;
+margin-top:15px;
+width: 300px;
+}
+
+.success-box .message {
+font-size: 15px;
+font-weight: bold;
+}
+
+
+.failed-box {
+background-color: #f8d7da;
+border: 1px solid #f5c6cb;
+color: #721c24;
+padding: 8px;
+border-radius: 5px;
+text-align: center;
+margin-top:15px;
+width: 300px;
+}
+
+.failed-box .message {
+font-size: 15px;
+font-weight: bold;
+}
+  
+  /* 1. Laptop Screens (4 columns) */
+@media (min-width: 1300px) { /* Example breakpoint for laptops */
+    .left{
+        flex: 1;
+    }
+  }
+/* 1. Laptop Screens (4 columns) */
+  /* 2. Tablet Screens (3 columns) */
+  @media (min-width: 768px) and (max-width: 1300px) { /* Example breakpoint for tablets */
     .container{
         flex-direction: column;
-        height: 100vh;
     }
 
   }
+  
+  /* 3. Small Tablet Screens (2 columns) */
+  @media (min-width: 576px) and (max-width: 1000px) { /* Example breakpoint for small tablets */
+    .container{
+        flex-direction: column;
+    }
+  }
+  
+  /* 4. Mobile Screens (1 column) */
+  @media (max-width: 575px) { /* Example breakpoint for mobile */
+    .container{
+        flex-direction: column;
+        height: 70vh;
+    }
+  }
 
-
-  .input-field1 input:focus + .placeholder,
-  .input-field2 input:focus + .placeholder,
-  .input-field3 input:focus + .placeholder,
-  .input-field1.has-content .placeholder,
-  .input-field2.has-content .placeholder,
-  .input-field3.has-content .placeholder {
-      top: -13.5px;
-      background-color: #fff;
-      color: #ff5e62;
+  @media (max-width: 375px) { /* Example breakpoint for mobile */
+    .container{
+        flex-direction: column;
+        height: 80vh;
+    }
   }
-  
-  .success-box {
-    background-color: #d4edda;
-    border: 1px solid #c3e6cb;
-    color: rgb(21, 87, 36);
-    padding: 8px;
-    border-radius: 5px;
-    text-align: center;
-    margin-top:15px;
-    width: 300px;
-  }
-  
-  .success-box .message {
-    font-size: 15px;
-    font-weight: bold;
-  }
-  
-
-  .failed-box {
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
-    color: #721c24;
-    padding: 8px;
-    border-radius: 5px;
-    text-align: center;
-    margin-top:15px;
-    width: 300px;
-  }
-  
-  .failed-box .message {
-    font-size: 15px;
-    font-weight: bold;
-  }
-  
