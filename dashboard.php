@@ -111,8 +111,17 @@
                                             <span class="icon"><i class="fa-solid fa-file"></i></span>
                                             <span class="text">' . $row["filename"] . '</span>
                                         </div>
-                                        <div class="download">
-                                            <a href="download.php?filename=' . urlencode($row["filename"]) . '"><i class="fa-solid fa-download"></i></a>
+                                        <div class="buttons">
+                                            <div class="delete">
+                                                <form action="delete.php" method="POST">
+                                                    <input type="hidden" name="file_id" value="' . $row["id"] . '">
+                                                    <input type="hidden" name="filename" value="' . $row["filename"] . '">
+                                                    <button type="submit" class="delete-btn"><i class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </div>
+                                            <div class="download">
+                                                <a href="download.php?filename=' . urlencode($row["filename"]) . '"><i class="fa-solid fa-download"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="photo">
